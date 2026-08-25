@@ -49,7 +49,7 @@ if ( ! defined( 'APPWPLP_SECRET_KEY_OPTION' ) ) {
 if ( ! defined( 'APPWPLP_SECRET_KEY_STATUS_OPTION' ) ) {
 	define( 'APPWPLP_SECRET_KEY_STATUS_OPTION', 'appwplp_shared_secret_key_status' ); // 'pending' | 'confirmed'
 }
-add_action('admin_init', 'wplp_appwplp_maybe_retry_secret_key_registration');
+add_action('admin_init', 'appwplp_maybe_retry_secret_key_registration');
 
 /**
  * Load WC_AM_Client class if it exists.
@@ -127,8 +127,8 @@ if ( ! function_exists( 'appwplp_maybe_generate_secret_key' ) ) {
 		do_action( 'appwplp_secret_key_generated', $new_key );
 	}
 }
-if ( ! function_exists( 'wplp_appwplp_maybe_retry_secret_key_registration' ) ) {
-	function wplp_appwplp_maybe_retry_secret_key_registration() {
+if ( ! function_exists( 'appwplp_maybe_retry_secret_key_registration' ) ) {
+	function appwplp_maybe_retry_secret_key_registration() {
 		$existing_status = get_option( APPWPLP_SECRET_KEY_STATUS_OPTION );
 
 		if ( 'confirmed' === $existing_status || empty( get_option( APPWPLP_SECRET_KEY_OPTION ) ) ) {
